@@ -41,9 +41,9 @@ import com.github.systemdir.gml.model.UniqueIntIdFunction;
 import com.github.systemdir.gml.model.YedGmlGraphicsProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jgrapht.DirectedGraph;
+import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.Graph;
-import org.jgrapht.UndirectedGraph;
+import org.jgrapht.graph.DefaultUndirectedGraph;
 
 import java.io.PrintWriter;
 import java.io.Writer;
@@ -322,7 +322,7 @@ public class YedGmlWriter<V, E, G> {
             out.println(
                     tab2 + "id" + delim + groupIdProvider.apply(group));
 
-            boolean printGroupLabels = printLables.contains(PRINT_GROUP_LABELS);
+                boolean printGroupLabels = printLables.contains(PRINT_GROUP_LABELS);
             if (printGroupLabels) {
                 String label = groupLabelProvider.apply(group);
                 out.println(tab2 + "label" + delim + quoted(label));
@@ -404,7 +404,7 @@ public class YedGmlWriter<V, E, G> {
      * @param output the writer to which the graph to be exported
      * @param g the undirected graph to be exported
      */
-    public void export(Writer output, UndirectedGraph<V, E> g) {
+    public void export(Writer output, DefaultUndirectedGraph<V, E> g) {
         export(output, g, false);
     }
 
@@ -414,7 +414,7 @@ public class YedGmlWriter<V, E, G> {
      * @param output the writer to which the graph to be exported
      * @param g the directed graph to be exported
      */
-    public void export(Writer output, DirectedGraph<V, E> g) {
+    public void export(Writer output, DefaultDirectedGraph<V, E> g) {
         export(output, g, true);
     }
 
